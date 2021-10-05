@@ -1,0 +1,119 @@
+<h3>{{viewTitle}}</h3>
+
+<form action="/employee" method="POST" autocomplete="off">
+    <input type="hidden" name="_id" value="{{employee._id}}">
+    <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" class="form-control" name="fullName" placeholder="Full Name" value="{{employee.fullName}}">
+        <div class="text-danger">
+            {{employee.fullNameError}}</div>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" name="email" placeholder="Email" value="{{employee.email}}">
+        <div class="text-danger">
+            {{employee.emailError}}</div>
+    </div>
+     <div class="form-group row">
+    <label for="password" class="col-4 col-form-label">Password</label> 
+    <div class="col-8">
+      <input id="password" name="password" value="{{employee.password}}" placeholder="Password" type="password" class="form-control" required="required">
+    </div>
+  </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Age</label>
+            <input type="number" class="form-control" name="age" placeholder="Age" value="{{employee.age}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label>City</label>
+            <input type="text" class="form-control" name="city" placeholder="City" value="{{employee.city}}">
+        </div>
+    </div>
+      <div class="form-group row">
+    <label class="col-4">Vehicle</label> 
+    <div class="col-8">
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input name="vehicleOwned" id="vehicleOwned_0" type="checkbox" class="custom-control-input" value="{{employee.vehicleOwned}}" > 
+        <label for="vehicleOwned_0" class="custom-control-label">Two Wheeler</label>
+      </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input name="vehicleOwned" id="vehicleOwned_1" type="checkbox" class="custom-control-input" value="{{employee.vehicleOwned}}" > 
+        <label for="vehicleOwned_1" class="custom-control-label">Four Wheeler</label>
+      </div>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-4">Gender</label> 
+    <div class="col-8">
+      <div class="custom-control custom-radio custom-control-inline">
+        <input name="gender" id="gender_0" type="radio" class="custom-control-input" value="Male" required="required"> 
+        <label for="gender_0" class="custom-control-label">Male</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input name="gender" id="gender_1" type="radio" class="custom-control-input" value="Female" required="required"> 
+        <label for="gender_1" class="custom-control-label">Female</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input name="gender" id="gender_2" type="radio" class="custom-control-input" value="Other" required="required"> 
+        <label for="gender_2" class="custom-control-label">Other</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+      <label class="col-4 col-form-label" for="dob">Date of Birth</label>
+      <div>
+          <input id="dob" name="dob" class="form-control" required="true" value="{{employee.dob}}" type="date">
+      </div>
+  </div>
+    <div class="form-group row">
+      <label class="col-4 col-form-label" for="time">Time of Birth</label>
+      <div>
+          <input id="time" name="time" class="form-control" value="{{employee.time}}" required="true" type="time">
+      </div>
+  </div>
+   <div class="form-group row">
+    <label for="rating" class="col-4 col-form-label">Rating</label>
+    <div class="col-8">
+    <input type="range" name="rating" id="rating" class="form-row" min="1" max="5" step="1"><span id="demo"></span> 
+  </div>
+   </div>
+
+   <div class="form-group row">
+    <label for="maritalStatus" class="col-4 col-form-label">Marital Status</label> 
+    <div class="col-8">
+      <select id="maritalStatus" name="maritalStatus" class="custom-select" id="maritalStatus" required="required">
+        <option value="Single">Single</option>
+        <option value="Married">Married</option>
+        <option value="Divorced">Divorced</option>
+      </select>
+    </div>
+  </div> 
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-info"><i class="fa fa-database"></i> Submit</button>
+        <a class="btn btn-secondary" href="/employee/list"><i class="fa fa-list-alt"></i> View All</a>
+    </div>
+</form>
+
+<script>
+    var slider = document.getElementById("rating");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+    
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
+</script>
+<script>
+    var vehicleOwned = []
+var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+for (var i = 0; i < checkboxes.length; i++) {
+  vehicleOwned.push(checkboxes[i].value)
+}
+</script>
+
+<script>
+    var employee.dob = String(employee.dob)
+</script>
